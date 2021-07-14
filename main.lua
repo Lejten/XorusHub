@@ -219,3 +219,21 @@ UserInputService.InputChanged:Connect(function(input)
 	end
 end)
 -------------------------------list-----------------------------------
+btt1.MouseButton1Click:Connect(function()
+   local tabs = SelectionList:GetChildren()
+   for i, child in ipairs(children) do
+   	if child:IsA("Frame") then
+	child.Visible = false			
+   	end
+   end
+   Frame1.Visible = true
+end
+btt2.MouseButton1Click:Connect(function()
+   local tabs = SelectionList:GetChildren()
+   for i, child in ipairs(children) do
+   	if child:IsA("Frame") then
+	child.Visible = false			
+   	end
+   end
+   Frame2.Visible = true
+end
