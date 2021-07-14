@@ -16,6 +16,12 @@ local btt2_2 = Instance.new("TextButton")
 local Frame2 = Instance.new("Frame")
 local btt1_3 = Instance.new("TextButton")
 local btt2_3 = Instance.new("TextButton")
+local UserInputService = game:GetService("UserInputService")
+local gui = Frame
+local dragging
+local dragInput
+local dragStart
+local startPos
 
 --Properties:
 
@@ -183,3 +189,33 @@ btt2_3.TextColor3 = Color3.fromRGB(0, 0, 0)
 btt2_3.TextScaled = true
 btt2_3.TextSize = 14.000
 btt2_3.TextWrapped = true
+------------------dragging----------------------------------------
+local function update(input)
+	local delta = input.Position - dragStart
+	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+gui.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = gui.Position
+		
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+gui.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+-------------------------------list-----------------------------------
