@@ -220,20 +220,22 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 -------------------------------list-----------------------------------
 btt1.MouseButton1Click:Connect(function()
-   local tabs = SelectionList:GetChildren()
-   for i, child in ipairs(children) do
-   	if child:IsA("Frame") then
-	child.Visible = false			
+    print("clicked")
+   local tabs = Selectionlist:GetChildren()
+   for i, child in ipairs(tabs) do
+   	if child:IsA("GuiObject") then
+	child.Visible = false
    	end
    end
    Frame1.Visible = true
-end
+end)
 btt2.MouseButton1Click:Connect(function()
-   local tabs = SelectionList:GetChildren()
-   for i, child in ipairs(children) do
-   	if child:IsA("Frame") then
-	child.Visible = false			
+    print("clicked2")
+   local tabs = Selectionlist:GetChildren()
+   for i, child in ipairs(tabs) do
+   	if child:IsA("GuiObject") then
+	child.Visible = false
    	end
    end
    Frame2.Visible = true
-end
+end)
