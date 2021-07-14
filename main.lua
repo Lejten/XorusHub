@@ -24,7 +24,7 @@ local btt2_3 = Instance.new("TextButton")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("CoreGui")
+ScreenGui.Parent = game:WaitForChild("CoreGui")
 
 Frame.Name = "Frame"
 Frame.Parent = ScreenGui
